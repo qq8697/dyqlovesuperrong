@@ -23,9 +23,11 @@
 </head>
 <body>
 	<!--===音乐：原谅——刘瑞琦======================================-->
-	<audio src="music/music.mp3">
-			
-	</audio>  
+	<audio autoplay="autoplay" id="voice" onload="musicLoaded">
+	  <!-- <source src="song.ogg" type="audio/ogg" /> -->
+	  <source src="music/music_s.mp3" type="audio/mpeg" />
+	Your browser does not support the audio element.
+	</audio>
 	
 	<!--==============================================================-->
 	<div id="main">
@@ -54,7 +56,14 @@
 
 	<!--==========================================================-->
     <script>
+		function musicLoaded (){
+
+			var voice = document.getElementById('voice');
+ 			console.log(voice)
+voice.play();
+		}
 	    (function(){
+	    		
 	        var canvas = $('#canvas');
 	        if (!canvas[0].getContext) {
 	            $("#error").show();
@@ -107,6 +116,9 @@
 	        var hold = 1;
 	
 	        canvas.click(function(e) {
+	        		var voice = document.getElementById('voice');
+ 							voice.play();
+
 	            var offset = canvas.offset(), x, y;
 	            x = e.pageX - offset.left;
 	            y = e.pageY - offset.top;
